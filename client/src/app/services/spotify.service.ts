@@ -46,27 +46,33 @@ export class SpotifyService {
     //JavaScript's "map" function might be useful for this, but there are other ways of building the array.
     const endpoint: string = `search/${category}/${encodeURIComponent(resource)}`;
 
-    return this.sendRequestToExpress(endpoint).then((data: any[]) => {
-      switch (category) {
-        case "artist":
-          return data.map((artist) => new ArtistData(artist));
+    return this.sendRequestToExpress(endpoint).then(
+      (data: any): ResourceData[] => {
+        switch (category) {
+          case "artist":
+            return data.artists.items.map((artist) => new ArtistData(artist));
 
-        case "album":
-          return data.map((album) => new AlbumData(album));
+          case "album":
+            return data.albums.items.map((album) => new AlbumData(album));
 
-        case "track":
-          return data.map((track) => new TrackData(track));
+          case "track":
+            return data.tracks.items.map((track) => new TrackData(track));
 
-        default:
-          return [];
-      }
-    });
+          default:
+            return [];
+        }
+      },
+    );
   }
 
   getArtist(artistId: string): Promise<ArtistData> {
     //TODO: use the artist endpoint to make a request to express.
     //Again, you may need to encode the artistId.
-    return null as any;
+    const endpoint: string = `artist/${encodeURIComponent(artistId)}`;
+
+    return this.sendRequestToExpress(endpoint).then((data: any): ArtistData => {
+      return new ArtistData(data);
+    });
   }
 
   getTopTracksForArtist(artistId: string): Promise<TrackData[]> {
