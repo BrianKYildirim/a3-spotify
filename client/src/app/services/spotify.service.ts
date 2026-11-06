@@ -34,7 +34,7 @@ export class SpotifyService {
 
   aboutMe(): Promise<ProfileData> {
     //This line is sending a request to express, which returns a promise with some data. We're then parsing the data
-    return this.sendRequestToExpress("/me").then((data) => {
+    return this.sendRequestToExpress("me").then((data) => {
       return new ProfileData(data);
     });
   }
@@ -47,13 +47,19 @@ export class SpotifyService {
       (data: any): ResourceData[] => {
         switch (category) {
           case "artist":
-            return data.artists.items.map((artist) => new ArtistData(artist));
+            return data.artists.items.map(
+              (artist: any): ArtistData => new ArtistData(artist),
+            );
 
           case "album":
-            return data.albums.items.map((album) => new AlbumData(album));
+            return data.albums.items.map(
+              (album: any): AlbumData => new AlbumData(album),
+            );
 
           case "track":
-            return data.tracks.items.map((track) => new TrackData(track));
+            return data.tracks.items.map(
+              (track: any): TrackData => new TrackData(track),
+            );
 
           default:
             return [];

@@ -3,21 +3,19 @@
 <input [(ngModel)]="searchString" />
 
 <select [(ngModel)]="searchCategory">
-  <option *ngFor="let category of searchCategories" [value]="category">
-    {{ category }}
-  </option>
+  @for (category of searchCategories; track category) {
+    <option [value]="category">{{ category }}</option>
+  }
 </select>
 
 <button class="btn btn-light" (click)="search()">Search</button>
 
-<add-carousel
-  *ngIf="searchCategory === 'artist' || searchCategory === 'album'"
-  [resources]="resources"
-  carouselId="search-results"
-></add-carousel>
+@if (resources && resources.length > 0) {
+  @if (searchCategory === 'artist' || searchCategory === 'album') {
+    <app-carousel [resources]="resources" carouselId="search-results"></app-carousel>
+  }
 
-<app-track-list
-  *ngIf="searchCategory === 'track'"
-  [tracks]="trackResults"
-></app-track-list>
-
+  @if (searchCategory === 'track') {
+    <app-track-list [tracks]="trackResults"></app-track-list>
+  }
+}

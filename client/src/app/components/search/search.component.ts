@@ -18,12 +18,17 @@ export class SearchComponent implements OnInit {
   searchCategories: string[] = ["artist", "album", "track"];
   resources: ResourceData[];
 
+  get trackResults(): TrackData[] {
+    return this.resources as TrackData[];
+  }
+
   constructor(private spotifyService: SpotifyService) {}
 
   ngOnInit() {}
 
   search() {
     // call search function in spotifyService and parse response
+
     this.spotifyService
       .searchFor(this.searchCategory, this.searchString)
       .then((data: ResourceData[]) => {
