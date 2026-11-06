@@ -6,7 +6,7 @@
 - 1/1 Communicating with the webserver
 - 1/1 Populating information about the user
 - 3/3 Populating the search component
-- */3 Artist page
+- 3/3 Artist page
 - */1.5 Album page
 - */0.5 Track page
 
