@@ -12,12 +12,12 @@
 
 
 2. How long, in hours, did it take you to complete this assignment?
-
+      Current total = 2.5hrs
 
 
 3. What online resources did you consult when completing this assignment? (list specific URLs)
- - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent (Implementing spotify.service.ts searchFor function)
- - https://developer.spotify.com/documentation/web-api (Clarifying how Spotify will send responses back)
+      - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent (Implementing spotify.service.ts searchFor function)
+      - https://developer.spotify.com/documentation/web-api (Clarifying how Spotify will send responses back)
 
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
